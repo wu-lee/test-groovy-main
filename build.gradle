@@ -1,0 +1,56 @@
+plugins {
+	id 'java'
+	id 'groovy'
+	id 'application'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+mainClassName = 'foo.Test'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+	compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.7'
+}
+jar {
+    manifest {
+		attributes 'Main-Class': mainClassName
+	}
+}
+
+/*
+jar {
+    manifest {
+		attributes 'Main-Class': mainClassName,
+			  'Specification-Title': 'Genset Server',
+			  'Specification-Vendor': 'Controllis Ltd.',
+			  'Specification-Version': version,
+			  'Implementation-Title': 'Genset Server',
+			  'Implementation-Vendor': 'Controllis Ltd.',
+			  'Implementation-Version': project.ext.buildVersion,
+			  'X-Built-By': System.getProperty('user.name'),
+			  'X-Build-Date': new Date()
+	}
+}
+
+
+
+// Since we have java depending on groovy files, we need to perform a joint compilation of both
+// in order to get the symbols to resolve.  https://stackoverflow.com/questions/22159699
+sourceSets {
+	main {
+		// override the default locations, rather than adding additional ones
+		groovy { srcDirs = ['src/main/groovy', 'src/main/java'] }
+		// don't compile Java code twice
+		java { srcDirs = [] }
+	}
+	test {
+		// override the default locations, rather than adding additional ones
+		groovy { srcDirs = ['src/test/groovy', 'src/test/java'] }
+		// don't compile Java code twice
+		java { srcDirs = [] }
+	}
+}
+*/
